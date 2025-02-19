@@ -7,7 +7,35 @@
     <link rel="stylesheet" href="./src/style.css">
 </head>
 <body>
-    <button id="loadContentButton" onclick="printAllFilms()">Cargar peliculas</button>
+    <div class="container">
+        <!-- Title Section -->
+        <header>
+            <h1>Film Library</h1>
+            <p>Search and manage your favorite movies</p>
+        </header>
+    
+        <!-- Input Fields for Filters -->
+        <section class="filters">
+            <div class="filter">
+                <label for="year">Year:</label>
+                <input type="number" id="year" class="input-field" placeholder="Enter year">
+            </div>
+    
+            <div class="filter">
+                <label for="director">Director:</label>
+                <input type="text" id="director" class="input-field" placeholder="Enter director name">
+            </div>
+    
+            <div class="filter">
+                <label for="title">Title:</label>
+                <input type="text" id="title" class="input-field" placeholder="Enter film title">
+            </div>
+    
+            <div class="filter">
+                <button id="searchButton" class="btn" onclick="searchFilms()">Search Films</button>
+            </div>
+        </section>
+
     <table id="films-table">
         <tr>
             <th>ID</th>
@@ -16,6 +44,8 @@
             <th>Director</th>
         </tr>
     </table>
+    <button id="loadContentButton" onclick="printAllFilms()">Cargar peliculas</button>
+    </div>
     <script src="./src/services.js"></script>
 </body>
 </html>

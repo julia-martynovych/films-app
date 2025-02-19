@@ -36,34 +36,8 @@ async function addFilm(film) {
 addFilm({ title: "Pulp Fiction", year: 1994, director: "Quentin Tarantino" });
 
 
-// READ: metod GET
-// function getAllFilms() {
-
-//     // necesitamos el asyn await metodo fetch y lo muetre por consola
-// }
-getAllFilms()
-// async function getAllFilms(){
-//     try {
-//         let promesa = await fetch("http://localhost:3000/films");
-//         let respuesta = await promesa.json();
-//         console.log(respuesta);
-//     } catch (error) {
-//         console.log("Error", error);
-// }
-// }
-
-// async function simpleGet() {
-//     const response = await fetch("http://localhost:3000/films", {
-//         method: "GET",
-//         headers: {
-//             "Content-Type":"application/json",
-//         },
-//     }); 
-//     const data = await response.json();
-//     console.log(data);
-// }
-// simpleGet();
-
+// READ: method GET
+function readFilm(){}
 async function getAllFilms(){
     try {
         let response = await fetch("http://localhost:3000/films");
@@ -79,18 +53,6 @@ async function simpleGet() {
         return data;
 }
     
-function getOneFilm() {
-    
-}
-// async function getOneFilm(id) {
-//     try {
-//         let response = await fetch(`http://localhost:3000/films/${id}`);
-//         let film = await response.json();
-//         console.log(film);
-//     } catch (error) {
-//         console.log("Error:", error);
-//     }
-// }
 async function getOneFilm(id) {
     try {
         let response = await fetch(`http://localhost:3000/films/${id}`);
@@ -102,7 +64,7 @@ async function getOneFilm(id) {
     }
 }
 
-getOneFilm(2); 
+getOneFilm(4); 
 
 // UPDATE: metod PUT
 function updateFilm() {
@@ -110,27 +72,8 @@ function updateFilm() {
 }
 
 // DELETE: metod DELETE
-function deleteFilm() {
-    
-}
-// async function deleteFilm(id) {
-//     try {
-//         const response = await fetch(`http://localhost:3000/films/${id}`, {
-//             method: "DELETE",  
-//         });
+function deleteFilm() {}
 
-//         if (response.ok) { 
-//             console.log(`Фильм с ID ${id} успешно удалён`);
-//         } else {
-//             console.log("Не удалось удалить фильм");
-//         }
-//     } catch (error) {
-//         console.log("Ошибка:", error);
-//     }
-// }
-
-// Пример использования:
-// deleteFilm(1); // Удалим фильм с ID = 1
 
 // PRINT
 function printFilms() { }
@@ -152,3 +95,31 @@ async function printAllFilms() {
     }
         )
 }
+
+
+// SEARCH: 
+async function searchFilms() {
+    try {
+        const year = document.getElementById("year").value;
+        const director = document.getElementById("director").value.toLowerCase();
+        const title = document.getElementById("title").value.toLowerCase();
+
+        let films = await getAllFilms();
+
+      
+        let filteredFilms = films.filter(film => {
+            const matchesYear = year ? film.year == year : true;
+            const matchesDirector = director ? film.director.toLowerCase().includes(director) : true;
+            const matchesTitle = title ? film.title.toLowerCase().includes(title) : true;
+            
+            return matchesYear && matchesDirector && matchesTitle;
+        });
+
+      
+        printFilms(filteredFilms);
+
+    } catch (error) {
+        console.log("Error:", error);
+    }
+}
+

@@ -1,4 +1,11 @@
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #1a1a2e, #16213e);
@@ -8,6 +15,111 @@ body {
     padding: 20px;
 }
 
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Header styles */
+header {
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #e3e3f0;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #e3e3f0;
+}
+
+/* Input fields and buttons */
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.filter {
+    width: 30%;
+}
+
+label {
+    font-size: 1em;
+    color: #e3e3f0;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-field {
+    width: 100%;
+    padding: 8px;
+    font-size: 1em;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: #e94560;
+    outline: none;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 18px;
+    background: #e94560;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(233, 69, 96, 0.5);
+}
+
+.btn:hover {
+    background: #ff2e63;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(233, 69, 96, 0.7);
+}
+
+/* Table styles */
+#films-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#films-table th,
+#films-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#films-table th {
+    background: rgba(255, 255, 255, 0.2);
+    color: #e3e3f0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#films-table tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#films-table tr:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
 
 #loadContentButton {
     background: #e94560;
