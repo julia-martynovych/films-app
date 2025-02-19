@@ -71,6 +71,54 @@
       "title": "Pulp Fiction",
       "year": 1994,
       "director": "Quentin Tarantino"
+    },
+    {
+      "id": "ca35",
+      "title": "El secreto de sus ojos",
+      "year": 2009,
+      "director": "Juan José Campanella"
+    },
+    {
+      "id": "64d5",
+      "title": "Todo sobre mi madre",
+      "year": 1999,
+      "director": "Pedro Almodóvar"
+    },
+    {
+      "id": "8057",
+      "title": "El laberinto del fauno",
+      "year": 2006,
+      "director": "Guillermo del Toro"
+    },
+    {
+      "id": "f555",
+      "title": "La naranja mecánica",
+      "year": 1971,
+      "director": "Stanley Kubrick"
+    },
+    {
+      "id": "b1e5",
+      "title": "La La Land",
+      "year": 2016,
+      "director": "Damien Chazelle"
+    },
+    {
+      "id": "cf5d",
+      "title": "La princesa Mononoke",
+      "year": 1997,
+      "director": "Hayao Miyazaki"
+    },
+    {
+      "id": "0d60",
+      "title": "El gran Lebowski",
+      "year": 1998,
+      "director": "Joel y Ethan Coen"
+    },
+    {
+      "id": "3aab",
+      "title": "Bajo la misma estrella",
+      "year": 2014,
+      "director": "Josh Boone"
     }
   ]
 }

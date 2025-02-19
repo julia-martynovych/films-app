@@ -33,7 +33,6 @@ async function addFilm(film) {
 
 // Example usage:
 // addFilm({ title: "New Movie", year: 2024, director: "Someone" });
-addFilm({ title: "Pulp Fiction", year: 1994, director: "Quentin Tarantino" });
 
 
 // READ: method GET
@@ -123,3 +122,27 @@ async function searchFilms() {
     }
 }
 
+function printFilms(films) {
+    
+    table.innerHTML = "";
+    table.innerHTML = tableHead;
+
+    
+    if (films.length === 0) {
+        table.insertAdjacentHTML("beforeend", "<tr><td colspan='4'>No films found</td></tr>");
+        return;
+    }
+
+   
+    films.forEach(film => {
+        table.insertAdjacentHTML(
+            "beforeend",
+            `<tr>
+                <td>${film.id}</td>
+                <td>${film.title}</td>
+                <td>${film.year}</td>
+                <td>${film.director}</td>
+            </tr>`
+        );
+    });
+}
