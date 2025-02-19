@@ -1,0 +1,76 @@
+{
+  "films": [
+    {
+      "id": "1",
+      "title": "El Padrino",
+      "year": 1972,
+      "director": "Francis Ford Coppola"
+    },
+    {
+      "id": "2",
+      "title": "Harry Potter",
+      "year": 2001,
+      "director": "Chris Columbos"
+    },
+    {
+      "id": "3",
+      "title": "Star Wars",
+      "year": 1977,
+      "director": "Geoge Lucas"
+    },
+    {
+      "id": "4",
+      "title": "El diario de Noa",
+      "year": 2025,
+      "director": "Nick Cassavetes"
+    },
+    {
+      "id": "5",
+      "title": "Interstellar",
+      "year": 2014,
+      "director": "Christopher Nolan"
+    },
+    {
+      "id": "3855",
+      "title": "New Movie",
+      "year": 2024,
+      "director": "Someone"
+    },
+    {
+      "id": "ec53",
+      "title": "Parasite",
+      "year": 2019,
+      "director": "Bong Joon-ho"
+    },
+    {
+      "id": "a43b",
+      "title": "Whiplash",
+      "year": 2014,
+      "director": "Damien Chazelle"
+    },
+    {
+      "id": "3f48",
+      "title": "The Grand Budapest Hotel",
+      "year": 2014,
+      "director": "Wes Anderson"
+    },
+    {
+      "id": "328a",
+      "title": "Spirited Away",
+      "year": 2001,
+      "director": "Hayao Miyazaki"
+    },
+    {
+      "id": "b301",
+      "title": "Fight Club",
+      "year": 1999,
+      "director": "David Fincher"
+    },
+    {
+      "id": "dd08",
+      "title": "Pulp Fiction",
+      "year": 1994,
+      "director": "Quentin Tarantino"
+    }
+  ]
+}
