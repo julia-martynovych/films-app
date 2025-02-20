@@ -1,18 +1,6 @@
 {
   "films": [
     {
-      "id": "1",
-      "title": "El Padrino",
-      "year": 1972,
-      "director": "Francis Ford Coppola"
-    },
-    {
-      "id": "2",
-      "title": "Harry Potter",
-      "year": 2001,
-      "director": "Chris Columbos"
-    },
-    {
       "id": "3",
       "title": "Star Wars",
       "year": 1977,
@@ -29,12 +17,6 @@
       "title": "Interstellar",
       "year": 2014,
       "director": "Christopher Nolan"
-    },
-    {
-      "id": "3855",
-      "title": "New Movie",
-      "year": 2024,
-      "director": "Someone"
     },
     {
       "id": "ec53",

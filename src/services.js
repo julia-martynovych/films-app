@@ -31,9 +31,6 @@ async function addFilm(film) {
     }
 }
 
-// Example usage:
-// addFilm({ title: "New Movie", year: 2024, director: "Someone" });
-
 
 // READ: method GET
 function readFilm(){}
@@ -66,12 +63,28 @@ async function getOneFilm(id) {
 getOneFilm(4); 
 
 // UPDATE: metod PUT
-function updateFilm() {
-    
-}
+function updateFilm() {}
 
 // DELETE: metod DELETE
-function deleteFilm() {}
+// function deleteFilm() { }
+async function deleteFilm(id, event) {  
+    try {
+        const response = await fetch(`http://localhost:3000/films/${id}`, {
+            method: "DELETE",
+        });
+
+        if (!response.ok) throw new Error(`Error deleting film: ${response.status}`);
+
+      
+        event.target.closest("tr").remove();
+
+        console.log(`Film ${id} deleted successfully`);
+    } catch (error) {
+        console.log("Error:", error);
+    }
+}
+
+
 
 
 // PRINT
@@ -82,17 +95,17 @@ async function printAllFilms() {
     table.innerHTML = "";
     table.innerHTML = tableHead;
     films.forEach((film) => {
-        table.insertAdjacentHTML(
-            "beforeend",
-            `<tr>
+        const row = document.createElement("tr");
+        row.innerHTML = `
             <td>${film.id}</td>
             <td>${film.title}</td>
             <td>${film.year}</td>
             <td>${film.director}</td>
-            </tr>`
-        )
-    }
-        )
+            <td><button class="delete-btn">❌</button></td>
+        `;
+        row.querySelector(".delete-btn").addEventListener("click", (event) => deleteFilm(film.id, event));
+        table.appendChild(row);
+    });
 }
 
 
@@ -146,3 +159,60 @@ function printFilms(films) {
         );
     });
 }
+
+// Form
+document.getElementById("showFormButton").addEventListener("click", function() {
+    const form = document.getElementById("addFilmForm");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+});
+
+// New Film
+async function addFilm() {
+    const title = document.getElementById("addTitle").value.trim();
+    const year = document.getElementById("addYear").value.trim();
+    const director = document.getElementById("addDirector").value.trim();
+
+    if (!title || !year || !director) {
+        alert("Please fill all fields.");
+        return;
+    }
+
+    const newFilm = { title, year, director };
+
+    try {
+        const response = await fetch("http://localhost:3000/films", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newFilm),
+        });
+
+        if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+
+        const data = await response.json();
+        alert("Film added successfully");
+
+        // Add a new film
+        const table = document.getElementById("films-table");
+        table.insertAdjacentHTML(
+            "beforeend",
+            `<tr>
+                <td>${data.id}</td>
+                <td>${data.title}</td>
+                <td>${data.year}</td>
+                <td>${data.director}</td>
+                <td><button class="delete-btn" onclick="deleteFilm(${data.id}, event)">❌</button></td>
+            </tr>`
+        );
+
+        // Clean
+        document.getElementById("addTitle").value = "";
+        document.getElementById("addYear").value = "";
+        document.getElementById("addDirector").value = "";
+
+    } catch (error) {
+        console.log("Error:", error);
+    }
+}
+
+document.getElementById("addFilmButton").addEventListener("click", addFilm);
+

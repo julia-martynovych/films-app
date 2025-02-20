@@ -141,3 +141,17 @@ label {
     transform: scale(1.1);
     box-shadow: 0 6px 15px rgba(233, 69, 96, 0.7);
 }
+
+
+.delete-btn {
+    background-color: #c1a3a8;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background-color: #f1d8dc;
+}

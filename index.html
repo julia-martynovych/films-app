@@ -8,7 +8,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Title Section -->
         <header>
             <h1>Film Library</h1>
             <p>Search and manage your favorite movies</p>
@@ -43,6 +42,22 @@
             <th>Director</th>
         </tr>
     </table>
+    <button id="showFormButton" class="btn">+</button>
+    
+    <!-- Form -->
+<div id="addFilmForm" style="display: none;">
+    <label for="addYear">Year:</label>
+    <input type="number" id="addYear" placeholder="Enter year">
+
+    <label for="addDirector">Director:</label>
+    <input type="text" id="addDirector" placeholder="Enter director">
+
+    <label for="addTitle">Title:</label>
+    <input type="text" id="addTitle" placeholder="Enter title">
+
+    <button class="btn" id="addFilmButton">Add</button>
+</div>
+
     <button id="loadContentButton" onclick="printAllFilms()">Cargar peliculas</button>
     </div>
     <script src="./src/services.js"></script>
