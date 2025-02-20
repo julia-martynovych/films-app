@@ -101,7 +101,7 @@ async function printAllFilms() {
             <td>${film.title}</td>
             <td>${film.year}</td>
             <td>${film.director}</td>
-            <td><button class="delete-btn">❌</button></td>
+            <td><button class="delete-btn"><i class="fa-solid fa-trash"></i></button></td>
         `;
         row.querySelector(".delete-btn").addEventListener("click", (event) => deleteFilm(film.id, event));
         table.appendChild(row);
@@ -160,11 +160,7 @@ function printFilms(films) {
     });
 }
 
-// Form
-document.getElementById("showFormButton").addEventListener("click", function() {
-    const form = document.getElementById("addFilmForm");
-    form.style.display = form.style.display === "none" ? "block" : "none";
-});
+
 
 // New Film
 async function addFilm() {
@@ -200,7 +196,7 @@ async function addFilm() {
                 <td>${data.title}</td>
                 <td>${data.year}</td>
                 <td>${data.director}</td>
-                <td><button class="delete-btn" onclick="deleteFilm(${data.id}, event)">❌</button></td>
+                <td><button class="delete-btn" onclick="deleteFilm(${data.id}, event)"><i class="fa-solid fa-trash"></i></button></td>
             </tr>`
         );
 

@@ -29,6 +29,11 @@ header h1 {
     font-size: 2.5em;
     color: #e3e3f0;
 }
+h2 {
+    font-size: 1.5em;
+    color: #e3e3f0;
+    margin-bottom: 3%;
+}
 
 header p {
     font-size: 1.2em;
@@ -36,7 +41,7 @@ header p {
 }
 
 /* Input fields and buttons */
-.filters {
+.filters, .newFilmForm{
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
@@ -46,7 +51,7 @@ header p {
     align-items: center;
 }
 
-.filter {
+.filter, .creating {
     width: 30%;
 }
 
@@ -134,6 +139,7 @@ label {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     box-shadow: 0 4px 10px rgba(233, 69, 96, 0.5);
+    margin-bottom: 5%;
 }
 
 #loadContentButton:hover {
@@ -143,9 +149,11 @@ label {
 }
 
 
+
+/*Delete button*/
 .delete-btn {
-    background-color: #c1a3a8;
-    color: white;
+    background-color: #c1bcef;
+    color: rgb(45, 49, 83);
     border: none;
     padding: 5px 10px;
     cursor: pointer;
