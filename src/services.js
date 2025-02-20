@@ -63,7 +63,22 @@ async function getOneFilm(id) {
 getOneFilm(4); 
 
 // UPDATE: metod PUT
-function updateFilm() {}
+function updateFilm() { }
+async function updateFilm(id, event) {  
+    try {
+        const response = await fetch(`http://localhost:3000/films/${id}`, {
+            method: "PUT",
+        });
+
+        if (!response.ok) throw new Error(`Error updating film: ${response.status}`);
+      
+        event.target.closest("tr").remove();
+
+        console.log(`Film ${id} deleted successfully`);
+    } catch (error) {
+        console.log("Error:", error);
+    }
+}
 
 // DELETE: metod DELETE
 // function deleteFilm() { }
@@ -101,6 +116,7 @@ async function printAllFilms() {
             <td>${film.year}</td>
             <td>${film.director}</td>
             <td><button class="delete-btn"><i class="fa-solid fa-trash"></i></button></td>
+            <td><button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button></td>
         `;
         row.querySelector(".delete-btn").addEventListener("click", (event) => deleteFilm(film.id, event));
         table.appendChild(row);
@@ -196,6 +212,7 @@ async function addFilm() {
                 <td>${data.year}</td>
                 <td>${data.director}</td>
                 <td><button class="delete-btn" onclick="deleteFilm(${data.id}, event)"><i class="fa-solid fa-trash"></i></button></td>
+                <td><button class="edit-btn" onclick="editFilm(${data.id}, event)><i class="fa-solid fa-pen-to-square"></i></button></td>
             </tr>`
         );
 
@@ -217,3 +234,4 @@ document.getElementById("showFormButton").addEventListener("click", function() {
     const form = document.getElementById("containerFormNewFilm");
     form.style.display = form.style.display === "none" ? "block" : "none";
 });
+

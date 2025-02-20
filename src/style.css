@@ -151,7 +151,7 @@ label {
 
 
 /*Delete button*/
-.delete-btn {
+.delete-btn, .edit-btn {
     background-color: #c1bcef;
     color: rgb(45, 49, 83);
     border: none;
