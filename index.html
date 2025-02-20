@@ -42,13 +42,16 @@
             <th>Titulo</th>
             <th>Año de Estreno</th>
             <th>Director</th>
+            <th></th>
         </tr>
     </table>
-    <button id="loadContentButton" onclick="printAllFilms()">Cargar peliculas</button>
-    <h2>Add new film</h2>
-   
+<button id="loadContentButton" onclick="printAllFilms()">Load films</button>
+    <button id="showFormButton" class="btn">Create new film</button>
+    
     <!-- Add film Form -->
-<div id="addFilmForm" class="newFilmForm">
+     <div id="containerFormNewFilm" style="display: none;">
+    <h2>Add new film</h2>
+<div id="addFilmForm" class="newFilmForm" >
     <div class="creating">
     <label for="addYear">Year:</label>
     <input type="number" id="addYear" class="input-field" placeholder="Enter year">
@@ -61,10 +64,9 @@
     <label for="addTitle">Title:</label>
     <input type="text" id="addTitle" class="input-field" placeholder="Enter title">
 </div>
-    <button class="btn" id="addFilmButton">Add</button>
+    <button class="btn" id="addFilmButton">Save</button>
 </div>
-
-    
+</div>
     </div>
     <script src="./src/services.js"></script>
 </body>

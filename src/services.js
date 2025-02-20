@@ -74,7 +74,6 @@ async function deleteFilm(id, event) {
         });
 
         if (!response.ok) throw new Error(`Error deleting film: ${response.status}`);
-
       
         event.target.closest("tr").remove();
 
@@ -212,3 +211,9 @@ async function addFilm() {
 
 document.getElementById("addFilmButton").addEventListener("click", addFilm);
 
+
+
+document.getElementById("showFormButton").addEventListener("click", function() {
+    const form = document.getElementById("containerFormNewFilm");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+});
