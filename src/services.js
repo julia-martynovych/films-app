@@ -1,8 +1,8 @@
 const table = document.getElementById("films-table");
-const tableHead = document.getElementById("films-table").outerHTML;
+const tableHead = table.outerHTML;
+let editFilm = null;
 
 // CREATE: metod POST
-function createFilms() { }
 async function addFilm(film) {
     try {
         
@@ -33,7 +33,6 @@ async function addFilm(film) {
 
 
 // READ: method GET
-function readFilm(){}
 async function getAllFilms(){
     try {
         let response = await fetch("http://localhost:3000/films");
@@ -60,28 +59,27 @@ async function getOneFilm(id) {
     }
 }
 
-getOneFilm(4); 
+
 
 // UPDATE: metod PUT
-function updateFilm() { }
-async function updateFilm(id, event) {  
+
+async function updateFilm(film) {  
     try {
-        const response = await fetch(`http://localhost:3000/films/${id}`, {
+        const response = await fetch(`http://localhost:3000/films/${film.id}`, {
             method: "PUT",
+            body: JSON.stringify(film)
         });
 
         if (!response.ok) throw new Error(`Error updating film: ${response.status}`);
-      
-        event.target.closest("tr").remove();
 
-        console.log(`Film ${id} deleted successfully`);
+        console.log(`Film ${film.id} updated successfully`);
     } catch (error) {
         console.log("Error:", error);
     }
 }
 
 // DELETE: metod DELETE
-// function deleteFilm() { }
+
 async function deleteFilm(id, event) {  
     try {
         const response = await fetch(`http://localhost:3000/films/${id}`, {
@@ -99,28 +97,10 @@ async function deleteFilm(id, event) {
 }
 
 
-
-
-// PRINT
-function printFilms() { }
 // PRINT
 async function printAllFilms() {
     let films = await getAllFilms();
-    table.innerHTML = "";
-    table.innerHTML = tableHead;
-    films.forEach((film) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${film.id}</td>
-            <td>${film.title}</td>
-            <td>${film.year}</td>
-            <td>${film.director}</td>
-            <td><button class="delete-btn"><i class="fa-solid fa-trash"></i></button></td>
-            <td><button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button></td>
-        `;
-        row.querySelector(".delete-btn").addEventListener("click", (event) => deleteFilm(film.id, event));
-        table.appendChild(row);
-    });
+    printFilms(films)
 }
 
 
@@ -134,7 +114,7 @@ async function searchFilms() {
         let films = await getAllFilms();
 
       
-        let filteredFilms = films.filter(film => {
+        let filteredFilms = films.filter((film) => {
             const matchesYear = year ? film.year == year : true;
             const matchesDirector = director ? film.director.toLowerCase().includes(director) : true;
             const matchesTitle = title ? film.title.toLowerCase().includes(title) : true;
@@ -151,8 +131,6 @@ async function searchFilms() {
 }
 
 function printFilms(films) {
-    
-    table.innerHTML = "";
     table.innerHTML = tableHead;
 
     
@@ -161,18 +139,25 @@ function printFilms(films) {
         return;
     }
 
-   
-    films.forEach(film => {
-        table.insertAdjacentHTML(
-            "beforeend",
-            `<tr>
-                <td>${film.id}</td>
-                <td>${film.title}</td>
-                <td>${film.year}</td>
-                <td>${film.director}</td>
-            </tr>`
-        );
+    films.forEach((film) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${film.id}</td>
+            <td>${film.title}</td>
+            <td>${film.year}</td>
+            <td>${film.director}</td>
+            <td><button class="delete-btn"><i class="fa-solid fa-trash"></i></button></td>
+            <td><button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button></td>
+        `;
+        row.querySelector(".delete-btn").addEventListener("click", (event) => deleteFilm(film.id, event));
+        row.querySelector(".edit-btn").addEventListener("click", () => {
+            editFilm = film;
+            
+         });
+        table.appendChild(row);
     });
+   
+    
 }
 
 
@@ -201,20 +186,7 @@ async function addFilm() {
 
         const data = await response.json();
         alert("Film added successfully");
-
-        // Add a new film
-        const table = document.getElementById("films-table");
-        table.insertAdjacentHTML(
-            "beforeend",
-            `<tr>
-                <td>${data.id}</td>
-                <td>${data.title}</td>
-                <td>${data.year}</td>
-                <td>${data.director}</td>
-                <td><button class="delete-btn" onclick="deleteFilm(${data.id}, event)"><i class="fa-solid fa-trash"></i></button></td>
-                <td><button class="edit-btn" onclick="editFilm(${data.id}, event)><i class="fa-solid fa-pen-to-square"></i></button></td>
-            </tr>`
-        );
+        await printAllFilms();
 
         // Clean
         document.getElementById("addTitle").value = "";
