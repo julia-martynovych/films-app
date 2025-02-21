@@ -32,7 +32,7 @@ async function addFilm(film) {
 }
 
 
-// READ: method GET
+// READ: method GET 
 async function getAllFilms(){
     try {
         let response = await fetch("http://localhost:3000/films");
@@ -42,11 +42,11 @@ async function getAllFilms(){
         throw new Error(`Error HTTP: ${response.status}`);
     }
 }
-async function simpleGet() {
-    let response = await fetch("http://localhost:3000/films");
-        let data = await response.json();
-        return data;
-}
+// async function simpleGet() {
+//     let response = await fetch("http://localhost:3000/films");
+//         let data = await response.json();
+//         return data;
+// }
     
 async function getOneFilm(id) {
     try {
@@ -170,6 +170,11 @@ async function addFilm() {
 
     if (!title || !year || !director) {
         alert("Please fill all fields.");
+        return;
+    }
+
+    if (!/^\d{4}$/.test(year)) {
+        alert("Year must be exactly 4 digits");
         return;
     }
 
